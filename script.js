@@ -1,12 +1,7 @@
 let weather = {
     apiKey: "518acb25102a32b26c50a1fee2b7e7bb",
     fetchWeather: function (city) {
-      fetch(
-        "https://api.openweathermap.org/data/2.5/weather?q=" +
-          city +
-          "&units=metric&appid=" +
-          this.apiKey
-      )
+      fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=" + this.apiKey)
         .then((response) => {
           if (!response.ok) {
             alert("No weather found.");
@@ -22,17 +17,13 @@ let weather = {
       const { temp, humidity } = data.main;
       const { speed } = data.wind;
       document.querySelector(".city").innerText = "Weather in " + name;
-      document.querySelector(".icon").src =
-        "https://openweathermap.org/img/wn/" + icon + ".png";
+      document.querySelector(".icon").src ="https://openweathermap.org/img/wn/" + icon + ".png";
       document.querySelector(".description").innerText = description;
       document.querySelector(".temp").innerText = temp + "°C";
-      document.querySelector(".humidity").innerText =
-        "Humidity: " + humidity + "%";
-      document.querySelector(".wind").innerText =
-        "Wind speed: " + speed + " km/h";
+      document.querySelector(".humidity").innerText ="Humidity: " + humidity + "%";
+      document.querySelector(".wind").innerText ="Wind speed: " + speed + " km/h";
       document.querySelector(".weather").classList.remove("loading");
-      document.body.style.backgroundImage =
-        "url('https://wallpaperaccess.com/full/5911249.jpg')";
+      document.body.style.backgroundImage ="url('https://wallpaperaccess.com/full/5911249.jpg')";
     },
     search: function () {
       this.fetchWeather(document.querySelector(".search-bar").value);
